@@ -1,5 +1,5 @@
 {
-    "name": "singularity/yii2-daterangepicker",
+    "name": "singularity/yii2-dropzoneinput",
     "description": "Dropzone Input for Yii2 framework",
     "keywords": [
         "singularity",
@@ -8,11 +8,13 @@
         "yii2",
         "yii 2",
         "widget",
-        "typeahead"
+        "dropzoneinput",
+        "dropzone",
+        "input"
     ],
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
-    "homepage": "https://github.com/singularity-is/yii2-daterangepicker",
+    "homepage": "https://github.com/singularity-is/yii2-dropzoneinput",
     "authors": [
         {
             "name": "Singularity Solution",

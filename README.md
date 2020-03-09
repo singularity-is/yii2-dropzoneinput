@@ -1,13 +1,13 @@
 # Date Range Picker Widget for Yii2
 
-[![Latest Version](https://img.shields.io/github/tag/singularity-is/yii2-daterangepicker.svg?style=flat-square&label=release)](https://github.com/singularity-is/yii2-daterangepicker/tags)
+[![Latest Version](https://img.shields.io/github/tag/singularity-is/yii2-dropzoneinput.svg?style=flat-square&label=release)](https://github.com/singularity-is/yii2-dropzoneinput/tags)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/singularity/yii2-daterangepicker/master.svg?style=flat-square)](https://travis-ci.org/singularity/yii2-daterangepicker)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/singularity/yii2-daterangepicker.svg?style=flat-square)](https://scrutinizer-ci.com/g/singularity/yii2-daterangepicker/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/singularity/yii2-daterangepicker.svg?style=flat-square)](https://scrutinizer-ci.com/g/singularity/yii2-daterangepicker)
-[![Total Downloads](https://img.shields.io/packagist/dt/singularity/yii2-daterangepicker.svg?style=flat-square)](https://packagist.org/packages/singularity/yii2-daterangepicker)
+[![Build Status](https://img.shields.io/travis/singularity/yii2-dropzoneinput/master.svg?style=flat-square)](https://travis-ci.org/singularity/yii2-dropzoneinput)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/singularity/yii2-dropzoneinput.svg?style=flat-square)](https://scrutinizer-ci.com/g/singularity/yii2-dropzoneinput/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/singularity/yii2-dropzoneinput.svg?style=flat-square)](https://scrutinizer-ci.com/g/singularity/yii2-dropzoneinput)
+[![Total Downloads](https://img.shields.io/packagist/dt/singularity/yii2-dropzoneinput.svg?style=flat-square)](https://packagist.org/packages/singularity/yii2-dropzoneinput)
 
-Renders a [Date Range Picker](http://www.daterangepicker.com) widget.
+Renders a [Date Range Picker](http://www.dropzone.js) widget.
 
 ## Installation
 
@@ -16,13 +16,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```bash
-$ composer require singularity/yii2-daterangepicker:~1.0
+$ composer require singularity/yii2-dropzoneinput:~1.0
 ```
 
 or add
 
 ```
-"singularity/yii2-daterangepicker": "~1.0"
+"singularity/yii2-dropzoneinput": "~1.0"
 ```
 
 to the `require` section of your `composer.json` file.
@@ -32,24 +32,24 @@ to the `require` section of your `composer.json` file.
 Using a model and widget configuration:
 
 ```
-use singularity\daterangepicker\Daterangepicker;
+use singularity\dropzoneinput\Dropzoneinput;
 
 ...
 
 <div class="col-lg-6">
     <div class="form-group">
-        <?= $form->field($model, 'attribute')->widget(Daterangepicker::class); ?>
+        <?= $form->field($model, 'attribute')->widget(DropzoneInput::class); ?>
     </div>
 </div>
 ```
 
 ```
-use singularity\daterangepicker\Daterangepicker;
+use singularity\dropzoneinput\DropzoneInput;
 
 ...
 
 <div class="col-lg-6">
-    <?= Daterangepicker::widget([
+    <?= DropzoneInput::widget([
         'model' => $model,
         'attribute' => 'attribute',
         'addonIcon' => 'fal fa-clock',
@@ -73,7 +73,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Credits
 
 - [Nikola Radovic](https://github.com/dzona)
-- [All Contributors](https://github.com/singularity-is/yii2-daterangepicker/graphs/contributors)
+- [All Contributors](https://github.com/singularity-is/yii2-dropzoneinput/graphs/contributors)
 
 ## License
 
