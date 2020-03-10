@@ -53,24 +53,6 @@
     }
 }
 
-.absoluteLeft {
-    display: none;
-    position: absolute;
-    top: -10px;
-    left: -10px;
-}
-
-.absoluteRight {
-    display: none;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-}
-
-.dz-complete .absoluteLeft, .dz-complete .absoluteRight {
-    display: block;
-}
-
 .dropzone-input-wrapper {
     box-sizing: border-box;
     min-height: 9.75rem;
@@ -528,20 +510,28 @@
 
 .absoluteLeft {
     display: none;
+    opacity: 0;
     position: absolute;
     top: -10px;
     left: -10px;
+    transition: opacity 200ms linear;
 }
 
 .absoluteRight {
     display: none;
+    opacity: 0;
     position: absolute;
     top: -10px;
     right: 90px;
+    transition: opacity 200ms linear;
 }
 
 .dz-complete .absoluteLeft, .dz-complete .absoluteRight {
     display: block;
+}
+
+.dropzone-input-wrapper .dz-preview:hover .absoluteLeft, .dropzone-input-wrapper .dz-preview:hover .absoluteRight {
+    opacity: 1;
 }
 
 /*Rotate end*/
