@@ -174,7 +174,7 @@ var dropzoneInput = (function ($) {
             var newAmount;
             var indexPosition = boxElement.index() - 2;
 
-            var imageIdsInputElement = $(this).closest('.chicago-dropzone').find('#listingform-imageids');
+            var imageIdsInputElement = $(this).closest('.dropzone-input-wrapper').find('#listingform-imageids');
             var imageIdsString = imageIdsInputElement.attr('originalvalue') || imageIdsInputElement.attr('value');
             var imageIdsArray = JSON.parse(imageIdsString);
             var imageId = imageIdsArray[indexPosition];
