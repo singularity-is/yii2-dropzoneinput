@@ -55,6 +55,45 @@ use singularity\dropzoneinput\DropzoneInput;
 ]) ?>
 ```
 
+## Options
+
+#### Preload Files
+Example:
+```
+[
+    'files' => $files // default empty
+]
+```
+Expected file format:
+```
+$file = [
+    'id' => 100,
+    'name' => 'My image',
+    'size' => 5,
+    'status' => 'success',
+    'url' => Url::to(['/image/view', 'id' => 100])
+];
+```
+
+#### Highlight First Item
+Example:
+```
+[
+    'highlightFirst' => true // default false
+]
+```
+
+#### Enable Rotation
+Example:
+```
+[
+    'enableRotate' => true // default false
+    'clientOptions' => [
+        'rotateUrl' => Url::to(['/image/rotate'])
+    ]
+]
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

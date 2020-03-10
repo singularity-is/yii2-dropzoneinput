@@ -3,11 +3,21 @@
  * Dositej Grbovic <info@singularity.is>
  * Company: Singularity <https://singularity.is>
  */
+
+/**
+ * @var bool $enableRotate
+ */
 ?>
 
 <div class="dz-preview dz-image-preview">
     <div class="dz-image"><img data-dz-thumbnail/></div>
     <div class="dz-details">
+        <?php if ($enableRotate): ?>
+            <div class="absoluteLeft "><a title="Rotate left" data-rotate-direction="left" class="rotate-btn d-block"><i
+                            class="fa fa-undo text-shadow cursor-pointer"></i></a></div>
+            <div class="absoluteRight"><a title="Rotate right" data-rotate-direction="right" class="rotate-btn d-block"><i
+                            class="fa fa-redo text-shadow cursor-pointer"></i></a></div>
+        <?php endif; ?>
         <div class="cover-label"><b>Cover image</b></div>
     </div>
     <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>

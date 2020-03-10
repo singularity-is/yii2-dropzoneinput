@@ -53,6 +53,10 @@ var dropzoneInput = (function ($) {
             this.updateInput();
             this.initializePreviewImagePopup();
 
+            if (this.config.enableRotate) {
+                $(document).on('click', '.rotate-btn', this.rotate);
+            }
+
             $(document).on('click', '.dz-preview.dz-complete', function (event) {
                 event.preventDefault();
                 var itemId = parseInt($(this).attr('data-id'));
@@ -150,7 +154,67 @@ var dropzoneInput = (function ($) {
             });
             updatedFiles.reverse();
             dropzoneInput.config.files = updatedFiles;
-        }
+        },
+        rotate: function () {
+            var rotateButton = $(this);
+            var boxElement = rotateButton.closest('.dz-image-preview');
+            var bothButtons = boxElement.find('.rotate-btn');
+
+            if (rotateButton.hasClass('disabled')) {
+                return;
+            } else {
+                for (let i = 0; i < bothButtons.length; i++) {
+                    dropzoneInput.beginLoading($(bothButtons[i]));
+                }
+            }
+
+            var imgElement = boxElement.find('img');
+            var direction = rotateButton.attr('data-rotate-direction');
+            var amount = parseInt(imgElement.attr('data-rotation-amount'));
+            var newAmount;
+            var indexPosition = boxElement.index() - 2;
+
+            var imageIdsInputElement = $(this).closest('.chicago-dropzone').find('#listingform-imageids');
+            var imageIdsString = imageIdsInputElement.attr('originalvalue') || imageIdsInputElement.attr('value');
+            var imageIdsArray = JSON.parse(imageIdsString);
+            var imageId = imageIdsArray[indexPosition];
+
+            if (direction === 'right') {
+                newAmount = (amount + 90) >= 360 ? 0 : (amount + 90);
+            } else {
+                newAmount = (amount - 90) <= -360 ? 0 : (amount - 90);
+            }
+
+            $.get(dropzoneInput.options.rotateUrl + '?id=' + imageId + '&angle=' + (direction === 'right' ? 90 : -90), function (data, status) {
+                if (status === 'success') {
+                    dropzoneInput.rotateImgElement(imgElement, newAmount);
+                }
+
+                for (let i = 0; i < bothButtons.length; i++) {
+                    dropzoneInput.stopLoading($(bothButtons[i]));
+                }
+            });
+        },
+        rotateImgElement: function (imgElement, newAmount) {
+            imgElement.attr('data-rotation-amount', newAmount);
+            imgElement.css({
+                '-webkit-transform': 'rotate(' + newAmount + 'deg)',
+                '-moz-transform': 'rotate(' + newAmount + 'deg)',
+                'transform': 'rotate(' + newAmount + 'deg)'
+            });
+        },
+        beginLoading: function (item) {
+            item.addClass('disabled');
+            item.attr('disabled', true);
+            item.find('i').attr('data-initial-class', item.find('i').attr('class'));
+            item.find('i').attr('class', 'fa fa-spinner fa-spin text-shadow');
+        },
+        stopLoading: function (item) {
+            item.removeClass('disabled');
+            item.removeAttr('disabled');
+            item.find('i').attr('class', item.find('i').attr('data-initial-class'));
+            item.find('i').removeAttr('data-initial-class');
+        },
     };
 })(jQuery);
 

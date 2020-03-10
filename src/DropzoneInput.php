@@ -32,6 +32,8 @@ use yii\widgets\InputWidget;
  * @property string $name
  * @property string $value
  * @property array $magnificPopupOptions
+ * @property bool $highlightFirst
+ * @property bool $enableRotate
  */
 class DropzoneInput extends InputWidget
 {
@@ -39,6 +41,7 @@ class DropzoneInput extends InputWidget
     public $magnificPopupOptions = [];
     public $files = [];
     public $highlightFirst = false;
+    public $enableRotate = false;
 
     public function init()
     {
@@ -65,9 +68,10 @@ class DropzoneInput extends InputWidget
         $rawOptions = ArrayHelper::merge([
             'maxFiles' => 20,
             'imageUrl' => Url::to(['/image/view']),
+            'rotateUrl' => Url::to(['/image/rotate']),
             'dictRemoveFile' => '<i class="fa fa-times-circle"></i>',
             'dictCancelUpload' => '<i class="fa fa-times-circle"></i>',
-            'previewTemplate' => $this->render('template')
+            'previewTemplate' => $this->render('template', ['enableRotate' => $this->enableRotate])
         ], $this->clientOptions);
         $options = Json::encode($rawOptions);
         $input = Html::getInputId($this->model, $this->attribute);
@@ -75,6 +79,7 @@ class DropzoneInput extends InputWidget
             'el' => "#{$this->getDropzoneId()}",
             'input' => "#{$input}",
             'files' => $this->files,
+            'enableRotate' => $this->enableRotate,
             'magnificPopupOptions' => $this->getMagnificPopupOptions()
         ]);
         $js[] = ";(function() {";
