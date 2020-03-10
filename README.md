@@ -29,41 +29,30 @@ to the `require` section of your `composer.json` file.
 
 ## Usage
 
-Using a model and widget configuration:
-
-```
-use singularity\dropzoneinput\Dropzoneinput;
-
-...
-
-<div class="col-lg-6">
-    <div class="form-group">
-        <?= $form->field($model, 'attribute')->widget(DropzoneInput::class); ?>
-    </div>
-</div>
-```
+Using with ActiveForm
 
 ```
 use singularity\dropzoneinput\DropzoneInput;
 
 ...
 
-<div class="col-lg-6">
-    <?= DropzoneInput::widget([
-        'model' => $model,
-        'attribute' => 'attribute',
-        'addonIcon' => 'fal fa-clock',
-        'clientOptions' => [
-            'opens' => 'right'
-        ]
-    ]); ?>
-</div>
+<?= $form->field($model, 'imageIds'])->widget(DropzoneInput::class, [
+    'files' => $data
+]); ?>
 ```
 
-## Testing
+Using without ActiveForm
 
-```bash
-$ ./vendor/bin/phpunit
+```
+use singularity\dropzoneinput\DropzoneInput;
+
+...
+
+<?= DropzoneInput::widget([
+    'model' => $model,
+    'attribute' => 'imageIds',
+    'files' => $data
+]) ?>
 ```
 
 ## Contributing
@@ -72,7 +61,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Nikola Radovic](https://github.com/dzona)
+- [Dositej Grbovic](https://dositej-dev.com)
 - [All Contributors](https://github.com/singularity-is/yii2-dropzoneinput/graphs/contributors)
 
 ## License

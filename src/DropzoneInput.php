@@ -63,13 +63,13 @@ class DropzoneInput extends InputWidget
         $js = [];
         $view = $this->getView();
         DropzoneInputAssets::register($view);
-        $rawOptions = ArrayHelper::merge($this->clientOptions, [
+        $rawOptions = ArrayHelper::merge([
             'maxFiles' => 20,
             'imageUrl' => Url::to(['/image/view']),
             'dictRemoveFile' => '<i class="fa fa-times-circle"></i>',
             'dictCancelUpload' => '<i class="fa fa-times-circle"></i>',
             'previewTemplate' => $this->render('template')
-        ]);
+        ], $this->clientOptions);
         $options = Json::encode($rawOptions);
         $input = Html::getInputId($this->model, $this->attribute);
         $config = Json::encode([
