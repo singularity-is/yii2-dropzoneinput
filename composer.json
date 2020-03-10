@@ -24,11 +24,7 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0.13",
-        "bower-asset/magnific-popup": "dev-master",
-        "bower-asset/slick-carousel": "dev-master",
-        "npm-asset/jquery-sortable": "dev-master",
-        "npm-asset/dropzone": "dev-master"
+
     },
     "require-dev": {
         "phpunit/phpunit": "~4.0"
