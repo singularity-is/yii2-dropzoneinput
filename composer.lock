@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e0cecd4784d41b62df67171e63625e35",
+    "content-hash": "59a33fbc951e516af033589ce490433d",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -78,6 +78,28 @@
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "type": "bower-asset"
+        },
+        {
+            "name": "bower-asset/slick-carousel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kenwheeler/slick.git",
+                "reference": "7daf56cb83e1365e7b7b0ef551f4a6b6b82a0f78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kenwheeler/slick/zipball/7daf56cb83e1365e7b7b0ef551f4a6b6b82a0f78",
+                "reference": "7daf56cb83e1365e7b7b0ef551f4a6b6b82a0f78"
+            },
+            "require": {
+                "bower-asset/jquery": ">=1.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ],
+            "time": "2019-11-26T23:55:19+00:00"
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -1594,6 +1616,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "bower-asset/magnific-popup": 20,
+        "bower-asset/slick-carousel": 20,
         "npm-asset/jquery-sortable": 20,
         "npm-asset/dropzone": 20
     },
