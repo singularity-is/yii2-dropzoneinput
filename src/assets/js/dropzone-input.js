@@ -9,7 +9,7 @@ var dropzoneInput = (function ($) {
 
             var defaults = {
                 sending: function (file, xhr, formData) {
-                    $('.blackbox-dropzone.dz-clickable.dz-started').sortable("disable");
+                    $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("disable");
                     formData.append(yii.getCsrfParam(), yii.getCsrfToken());
                 },
                 successmultiple: function (files, xhr) {
@@ -41,7 +41,7 @@ var dropzoneInput = (function ($) {
                     });
                 },
                 queuecomplete: function () {
-                    $('.blackbox-dropzone.dz-clickable.dz-started').sortable("enable");
+                    $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("enable");
                 }
             };
 
@@ -83,7 +83,7 @@ var dropzoneInput = (function ($) {
                 if (mfpInstance.items) mfpInstance.updateItemHTML();
             });
 
-            $('.blackbox-dropzone').sortable({
+            $('.dropzone-input-wrapper').sortable({
                 stop: function (event, ui) {
                     dropzoneInput.updateFilesFromElements();
                     dropzoneInput.updateInput();

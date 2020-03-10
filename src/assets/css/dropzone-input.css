@@ -56,55 +56,55 @@
 .dz-complete .absoluteLeft, .dz-complete .absoluteRight {
     display: block;
 }
-.blackbox-dropzone {
+.dropzone-input-wrapper {
     box-sizing: border-box;
     min-height: 9.75rem;
     padding: .5rem;
     border: 1px solid #d1d1d1;
     /*border-radius: 0.3rem;*/
     background:  #f8f8f8; }
-.blackbox-dropzone i{
+.dropzone-input-wrapper i{
     font-size: 5rem; }
-.blackbox-dropzone * {
+.dropzone-input-wrapper * {
     box-sizing: border-box; }
-.blackbox-dropzone.dz-clickable {
+.dropzone-input-wrapper.dz-clickable {
     cursor: pointer; }
-.blackbox-dropzone.dz-clickable * {
+.dropzone-input-wrapper.dz-clickable * {
     cursor: default; }
-.blackbox-dropzone.dz-clickable .dz-message {
+.dropzone-input-wrapper.dz-clickable .dz-message {
     cursor: pointer; }
-.blackbox-dropzone.dz-clickable .dz-message * {
+.dropzone-input-wrapper.dz-clickable .dz-message * {
     cursor: pointer; }
-.blackbox-dropzone.dz-started .dz-message {
+.dropzone-input-wrapper.dz-started .dz-message {
     display: none; }
-.blackbox-dropzone.dz-drag-hover {
+.dropzone-input-wrapper.dz-drag-hover {
     border-color: #28a745;
     background: rgba(40, 167, 69, 0.15); }
-.blackbox-dropzone.dz-drag-hover .dz-message {
+.dropzone-input-wrapper.dz-drag-hover .dz-message {
     opacity: .5;
     color: #28a745; }
-.blackbox-dropzone.dz-drag-hover .dz-message span:before {
+.dropzone-input-wrapper.dz-drag-hover .dz-message span:before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2328a745' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z'/%3E%3C/svg%3E"); }
-.blackbox-dropzone.is-valid {
+.dropzone-input-wrapper.is-valid {
     border-color: #28a745; }
-.blackbox-dropzone.is-valid .dz-message {
+.dropzone-input-wrapper.is-valid .dz-message {
     color: #28a745; }
-.blackbox-dropzone.is-valid .dz-message span:before {
+.dropzone-input-wrapper.is-valid .dz-message span:before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2328a745' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17 15.18 9l1.41 1.41L10 17z'/%3E%3C/svg%3E"); }
-.blackbox-dropzone.is-invalid {
+.dropzone-input-wrapper.is-invalid {
     border-color: #dc3545; }
-.blackbox-dropzone.is-invalid .dz-message {
+.dropzone-input-wrapper.is-invalid .dz-message {
     color: #dc3545; }
-.blackbox-dropzone.is-invalid .dz-message span:before {
+.dropzone-input-wrapper.is-invalid .dz-message span:before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23dc3545' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z'/%3E%3C/svg%3E"); }
-.blackbox-dropzone .dz-message {
+.dropzone-input-wrapper .dz-message {
     background: none;
     border: none;
     text-align: center;
     color: #32325d;
     font-weight: 500;
     line-height: 1; }
-.blackbox-dropzone .dz-message span:before {
+.dropzone-input-wrapper .dz-message span:before {
     display: block;
     position: relative;
     top: 0;
@@ -116,25 +116,25 @@
     background-size: 2.5rem 2.5rem;
     background-position: center center;
     background-repeat: no-repeat; }
-.blackbox-dropzone .dz-preview {
+.dropzone-input-wrapper .dz-preview {
     position: relative;
     display: inline-block;
     padding: 5px;
     min-height: 5rem;
     margin: .5rem;
     vertical-align: top; }
-.blackbox-dropzone .dz-preview:hover {
+.dropzone-input-wrapper .dz-preview:hover {
     z-index: 1000; }
-.blackbox-dropzone .dz-preview.dz-file-preview .dz-image {
+.dropzone-input-wrapper .dz-preview.dz-file-preview .dz-image {
     background-color: #54a7ff; }
-.blackbox-dropzone .dz-preview.dz-file-preview .dz-image:hover {
+.dropzone-input-wrapper .dz-preview.dz-file-preview .dz-image:hover {
     background-color: #007bff; }
-.blackbox-dropzone .dz-preview.dz-image-preview {
+.dropzone-input-wrapper .dz-preview.dz-image-preview {
     background: transparent; }
-.blackbox-dropzone .dz-preview.dz-image-preview .dz-details {
+.dropzone-input-wrapper .dz-preview.dz-image-preview .dz-details {
     cursor: pointer;
     transition: opacity 200ms linear; }
-.blackbox-dropzone .dz-preview .dz-remove {
+.dropzone-input-wrapper .dz-preview .dz-remove {
     display: block;
     opacity: 0;
     cursor: pointer;
@@ -145,17 +145,17 @@
     right: -10px;
     z-index: 20;
     transition: opacity 200ms linear; }
-.blackbox-dropzone .dz-preview:hover .dz-remove {
+.dropzone-input-wrapper .dz-preview:hover .dz-remove {
     opacity: 1;
 }
-.blackbox-dropzone .dz-preview .dz-remove i {
+.dropzone-input-wrapper .dz-preview .dz-remove i {
     font-size: 32px;
     cursor: pointer; }
-.blackbox-dropzone .dz-preview .dz-remove:hover {
+.dropzone-input-wrapper .dz-preview .dz-remove:hover {
     text-decoration: underline; }
-.blackbox-dropzone .dz-preview:hover .dz-details {
+.dropzone-input-wrapper .dz-preview:hover .dz-details {
     opacity: 1; }
-.blackbox-dropzone .dz-preview .dz-details {
+.dropzone-input-wrapper .dz-preview .dz-details {
     display: flex;
     z-index: 20;
     position: absolute;
@@ -169,38 +169,38 @@
     text-align: center;
     line-height: 150%;
     color: white; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size {
     margin-bottom: 4.5rem;
     font-size: 0.875rem; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size,
-.blackbox-dropzone .dz-preview .dz-details .dz-filename {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size,
+.dropzone-input-wrapper .dz-preview .dz-details .dz-filename {
     white-space: nowrap; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size:hover:before,
-.blackbox-dropzone .dz-preview .dz-details .dz-filename:hover:before {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size:hover:before,
+.dropzone-input-wrapper .dz-preview .dz-details .dz-filename:hover:before {
     content: "";
     margin-left: -100%; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size:hover:after,
-.blackbox-dropzone .dz-preview .dz-details .dz-filename:hover:after {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size:hover:after,
+.dropzone-input-wrapper .dz-preview .dz-details .dz-filename:hover:after {
     content: "";
     margin-right: -100%; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size:hover span,
-.blackbox-dropzone .dz-preview .dz-details .dz-filename:hover span {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size:hover span,
+.dropzone-input-wrapper .dz-preview .dz-details .dz-filename:hover span {
     padding: .125rem .375rem;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 0.2rem; }
-.blackbox-dropzone .dz-preview .dz-details .dz-size:not(:hover),
-.blackbox-dropzone .dz-preview .dz-details .dz-filename:not(:hover) {
+.dropzone-input-wrapper .dz-preview .dz-details .dz-size:not(:hover),
+.dropzone-input-wrapper .dz-preview .dz-details .dz-filename:not(:hover) {
     overflow: hidden;
     text-overflow: ellipsis; }
-.blackbox-dropzone .dz-preview .dz-details .cover-label {
+.dropzone-input-wrapper .dz-preview .dz-details .cover-label {
     display: none;
 }
-.blackbox-dropzone .dz-preview:nth-child(3) {
+.dropzone-input-wrapper.highlight-first .dz-preview:nth-child(3) {
     border: #9c27b0 dashed 1px;
     padding: 4px;
     border-radius: 5px;
 }
-.blackbox-dropzone .dz-preview:nth-child(3) .dz-details .cover-label {
+.dropzone-input-wrapper.highlight-first .dz-preview:nth-child(3) .dz-details .cover-label {
     display: block;
     margin-top: auto;
     width: 100%;
@@ -229,38 +229,38 @@
     font-size: 1.5rem;
     cursor: pointer !important;
 }
-.blackbox-dropzone .dz-preview .dz-details .full-preview-control {
+.dropzone-input-wrapper .dz-preview .dz-details .full-preview-control {
     display: none;
 }
-.blackbox-dropzone .dz-preview.dz-complete .dz-details .full-preview-control {
+.dropzone-input-wrapper .dz-preview.dz-complete .dz-details .full-preview-control {
     display: initial;
     position: absolute;
     top: -10px;
     right: -5px;
     color: #5a6268;
 }
-.blackbox-dropzone .dz-preview .dz-details .full-preview-control i {
+.dropzone-input-wrapper .dz-preview .dz-details .full-preview-control i {
     font-size: 1.5rem;
     cursor: pointer;
 }
-.blackbox-dropzone .dz-preview .dz-image {
+.dropzone-input-wrapper .dz-preview .dz-image {
     overflow: hidden;
     width: 7.5rem;
     height: 7.5rem;
     position: relative;
     display: block;
     z-index: 10; }
-.blackbox-dropzone .dz-preview .dz-image img {
+.dropzone-input-wrapper .dz-preview .dz-image img {
     max-width: 100%;
     height: auto;
     display: block; }
-.blackbox-dropzone .dz-preview.dz-success .dz-success-mark {
+.dropzone-input-wrapper .dz-preview.dz-success .dz-success-mark {
     animation: passing-through 300ms cubic-bezier(0.77, 0, 0.175, 1); }
-.blackbox-dropzone .dz-preview.dz-error .dz-error-mark {
+.dropzone-input-wrapper .dz-preview.dz-error .dz-error-mark {
     opacity: 1;
     animation: slide-in 300ms cubic-bezier(0.77, 0, 0.175, 1); }
-.blackbox-dropzone .dz-preview .dz-success-mark,
-.blackbox-dropzone .dz-preview .dz-error-mark {
+.dropzone-input-wrapper .dz-preview .dz-success-mark,
+.dropzone-input-wrapper .dz-preview .dz-error-mark {
     pointer-events: none;
     opacity: 0;
     z-index: 500;
@@ -270,26 +270,26 @@
     left: 50%;
     margin-top: -1.5rem;
     margin-left: -1.5rem; }
-.blackbox-dropzone .dz-preview .dz-success-mark svg,
-.blackbox-dropzone .dz-preview .dz-error-mark svg {
+.dropzone-input-wrapper .dz-preview .dz-success-mark svg,
+.dropzone-input-wrapper .dz-preview .dz-error-mark svg {
     display: block;
     width: 3rem;
     height: 3rem; }
-.blackbox-dropzone .dz-preview .dz-success-mark svg * {
+.dropzone-input-wrapper .dz-preview .dz-success-mark svg * {
     fill: #28a745;
     fill-opacity: 1; }
-.blackbox-dropzone .dz-preview .dz-error-mark svg * {
+.dropzone-input-wrapper .dz-preview .dz-error-mark svg * {
     fill: #dc3545;
     fill-opacity: 1; }
-.blackbox-dropzone .dz-preview.dz-processing .dz-progress {
+.dropzone-input-wrapper .dz-preview.dz-processing .dz-progress {
     opacity: 1;
     transition: all 200ms linear; }
-.blackbox-dropzone .dz-preview.dz-complete .dz-progress {
+.dropzone-input-wrapper .dz-preview.dz-complete .dz-progress {
     opacity: 0;
     transition: opacity 400ms ease-in; }
-.blackbox-dropzone .dz-preview:not(.dz-processing) .dz-progress {
+.dropzone-input-wrapper .dz-preview:not(.dz-processing) .dz-progress {
     animation: pulse 6s ease infinite; }
-.blackbox-dropzone .dz-preview .dz-progress {
+.dropzone-input-wrapper .dz-preview .dz-progress {
     opacity: 1;
     z-index: 1000;
     pointer-events: none;
@@ -304,7 +304,7 @@
     background: rgba(255, 255, 255, 0.6);
     -webkit-transform: scale(1);
     overflow: hidden; }
-.blackbox-dropzone .dz-preview .dz-progress .dz-upload {
+.dropzone-input-wrapper .dz-preview .dz-progress .dz-upload {
     background: #28a745;
     background: linear-gradient(to bottom, #28a745, #1e7d34);
     position: absolute;
@@ -313,12 +313,12 @@
     bottom: 0;
     width: 0;
     transition: width 300ms ease-in-out; }
-.blackbox-dropzone .dz-preview.dz-error .dz-error-message {
+.dropzone-input-wrapper .dz-preview.dz-error .dz-error-message {
     display: block; }
-.blackbox-dropzone .dz-preview.dz-error:hover .dz-error-message {
+.dropzone-input-wrapper .dz-preview.dz-error:hover .dz-error-message {
     opacity: 1;
     pointer-events: auto; }
-.blackbox-dropzone .dz-preview .dz-error-message {
+.dropzone-input-wrapper .dz-preview .dz-error-message {
     pointer-events: none;
     z-index: 1000;
     position: absolute;
@@ -334,7 +334,7 @@
     color: white;
     opacity: 0;
     transition: opacity 300ms ease; }
-.blackbox-dropzone .dz-preview .dz-error-message:after {
+.dropzone-input-wrapper .dz-preview .dz-error-message:after {
     content: '';
     position: absolute;
     top: -.5rem;
@@ -345,18 +345,18 @@
     border-right: .5rem solid transparent;
     border-bottom: 0.5rem solid #dc3545; }
 
-.has-success .blackbox-dropzone {
+.has-success .dropzone-input-wrapper {
     border-color: #28a745; }
-.has-success .blackbox-dropzone .dz-message {
+.has-success .dropzone-input-wrapper .dz-message {
     color: #28a745; }
-.has-success .blackbox-dropzone .dz-message span:before {
+.has-success .dropzone-input-wrapper .dz-message span:before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2328a745' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17 15.18 9l1.41 1.41L10 17z'/%3E%3C/svg%3E"); }
 
-.has-danger .blackbox-dropzone {
+.has-danger .dropzone-input-wrapper {
     border-color: #dc3545; }
-.has-danger .blackbox-dropzone .dz-message {
+.has-danger .dropzone-input-wrapper .dz-message {
     color: #dc3545; }
-.has-danger .blackbox-dropzone .dz-message span:before {
+.has-danger .dropzone-input-wrapper .dz-message span:before {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23dc3545' d='M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z'/%3E%3C/svg%3E"); }
 .mfp-bg, .mfp-wrap {
     z-index: 1051;

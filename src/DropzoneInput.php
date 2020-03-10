@@ -29,17 +29,16 @@ use yii\widgets\InputWidget;
  * @property string $attribute
  * @property array $options
  * @property array $clientOptions
- * @property array $wrapperOptions
  * @property string $name
  * @property string $value
  * @property array $magnificPopupOptions
  */
 class DropzoneInput extends InputWidget
 {
-    public $wrapperOptions = [];
     public $clientOptions = [];
     public $magnificPopupOptions = [];
     public $files = [];
+    public $highlightFirst = false;
 
     public function init()
     {
@@ -100,7 +99,8 @@ class DropzoneInput extends InputWidget
     protected function initOptions()
     {
         $this->options['id'] = $this->getDropzoneId();
-        Html::addCssClass($this->options, 'blackbox-dropzone');
+        $class = "dropzone-input-wrapper" . ($this->highlightFirst ? ' highlight-first' : '');
+        Html::addCssClass($this->options, $class);
     }
 
     protected function getDropzoneId()
