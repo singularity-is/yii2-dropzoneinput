@@ -12,6 +12,6 @@ class SortableAsset extends AssetBundle
     public $css = [];
 
     public $js = [
-        'jquery-sortable/source/js/jquery-sortable-min.js'
+        'jquery-ui-sortable/jquery-ui-sortable.min.js'
     ];
 }
