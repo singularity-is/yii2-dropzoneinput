@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 
 class SortableAsset extends AssetBundle
 {
-    public $sourcePath = '@npm/';
+    public $sourcePath = '@bower/';
 
     public $css = [];
 
