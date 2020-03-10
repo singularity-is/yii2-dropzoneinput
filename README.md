@@ -1,4 +1,4 @@
-# Date Range Picker Widget for Yii2
+# Dropzone Input Widget for Yii2
 
 [![Latest Version](https://img.shields.io/github/tag/singularity-is/yii2-dropzoneinput.svg?style=flat-square&label=release)](https://github.com/singularity-is/yii2-dropzoneinput/tags)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -7,7 +7,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/singularity/yii2-dropzoneinput.svg?style=flat-square)](https://scrutinizer-ci.com/g/singularity/yii2-dropzoneinput)
 [![Total Downloads](https://img.shields.io/packagist/dt/singularity/yii2-dropzoneinput.svg?style=flat-square)](https://packagist.org/packages/singularity/yii2-dropzoneinput)
 
-Renders a [Date Range Picker](http://www.dropzone.js) widget.
+Renders a [Dropzone Input](http://www.dropzone.js) widget.
 
 ## Installation
 

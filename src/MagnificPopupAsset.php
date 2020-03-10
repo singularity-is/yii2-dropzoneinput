@@ -17,8 +17,4 @@ class MagnificPopupAsset extends AssetBundle
     public $css = [
         'magnific-popup/dist/magnific-popup.css'
     ];
-
-    public $depends = [
-        'yii\web\JqueryAsset'
-    ];
 }
