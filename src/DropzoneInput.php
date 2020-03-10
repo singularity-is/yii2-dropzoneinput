@@ -64,6 +64,7 @@ class DropzoneInput extends InputWidget
     {
         $js = [];
         $view = $this->getView();
+        $dictCoverFile = array_key_exists('dictCoverFile', $this->clientOptions) ? $this->clientOptions['dictCoverFile'] : 'Cover Image';
         DropzoneInputAssets::register($view);
         $rawOptions = ArrayHelper::merge([
             'maxFiles' => 20,
@@ -71,7 +72,7 @@ class DropzoneInput extends InputWidget
             'rotateUrl' => Url::to(['/image/rotate']),
             'dictRemoveFile' => '<i class="fa fa-times-circle"></i>',
             'dictCancelUpload' => '<i class="fa fa-times-circle"></i>',
-            'previewTemplate' => $this->render('template', ['enableRotate' => $this->enableRotate])
+            'previewTemplate' => $this->render('template', ['enableRotate' => $this->enableRotate, 'dictCoverFile' => $dictCoverFile])
         ], $this->clientOptions);
         $options = Json::encode($rawOptions);
         $input = Html::getInputId($this->model, $this->attribute);

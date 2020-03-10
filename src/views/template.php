@@ -6,6 +6,7 @@
 
 /**
  * @var bool $enableRotate
+ * @var string $dictCoverFile
  */
 ?>
 
@@ -18,7 +19,7 @@
             <div class="absoluteRight"><a title="Rotate right" data-rotate-direction="right" class="rotate-btn d-block"><i
                             class="fa fa-redo text-shadow cursor-pointer"></i></a></div>
         <?php endif; ?>
-        <div class="cover-label"><b>Cover image</b></div>
+        <div class="cover-label"><b><?= $dictCoverFile ?></b></div>
     </div>
     <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
     <div class="dz-error-message"><span data-dz-errormessage></span></div>
