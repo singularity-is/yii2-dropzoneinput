@@ -10,7 +10,7 @@
 ?>
 
 <div class="dz-preview dz-image-preview">
-    <div class="dz-image"><img data-dz-thumbnail/></div>
+    <div class="dz-image"><img data-rotation-amount=0 data-dz-thumbnail/></div>
     <div class="dz-details">
         <?php if ($enableRotate): ?>
             <div class="absoluteLeft "><a title="Rotate left" data-rotate-direction="left" class="rotate-btn d-block"><i
