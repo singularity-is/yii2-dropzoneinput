@@ -14,7 +14,7 @@ use yii\web\AssetBundle;
 
 class DropzoneInputAssets extends AssetBundle
 {
-    public $sourcePath = '@npm/dropzoneinput';
+    public $sourcePath = '@vendor/singularity/yii2-dropzoneinput/src/assets';
 
     public $css = [
         'css/dropzone-input.css'
@@ -25,6 +25,7 @@ class DropzoneInputAssets extends AssetBundle
     ];
 
     public $depends = [
+        'yii\web\JqueryAsset',
         'singularity\dropzoneinput\MagnificPopupAsset',
         'singularity\dropzoneinput\SortableAsset'
     ];

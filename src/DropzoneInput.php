@@ -21,8 +21,7 @@ use yii\widgets\ActiveField;
 use yii\widgets\InputWidget;
 
 /**
- * Class AttributeFieldRender
- * @package common\widgets
+ * Class DropzoneInput
  *
  * @property ActiveField $field
  * @property Model $model
