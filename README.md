@@ -71,7 +71,8 @@ $file = [
     'name' => 'My image',
     'size' => 5,
     'status' => 'success',
-    'url' => Url::to(['/image/view', 'id' => 100])
+    'url' => Url::to(['/image/view', 'id' => 100, 'spec' => 'w120']), // dropzone thumbnail image url
+    'src' => Url::to(['/image/view', 'id' => 100, 'spec' => 'w1200']) // full preview image url
 ];
 ```
 
