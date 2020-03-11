@@ -27,6 +27,7 @@ class DropzoneInputAssets extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'singularity\dropzoneinput\MagnificPopupAsset',
-        'singularity\dropzoneinput\SortableAsset'
+        'singularity\dropzoneinput\SortableAsset',
+        'singularity\dropzoneinput\CropperAsset'
     ];
 }
