@@ -95,6 +95,22 @@ Example:
 ]
 ```
 
+#### Enable Preview
+Example:
+```
+[
+    'enablePreview' => true // default false
+]
+```
+
+#### Enable Sort
+Example:
+```
+[
+    'enableSort' => true // default true
+]
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

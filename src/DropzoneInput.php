@@ -34,14 +34,19 @@ use yii\widgets\InputWidget;
  * @property array $magnificPopupOptions
  * @property bool $highlightFirst
  * @property bool $enableRotate
+ * @property bool $enablePreview
+ * @property bool $enableSort
  */
 class DropzoneInput extends InputWidget
 {
     public $clientOptions = [];
     public $magnificPopupOptions = [];
     public $files = [];
+
     public $highlightFirst = false;
     public $enableRotate = false;
+    public $enablePreview = false;
+    public $enableSort = true;
 
     public function init()
     {
@@ -81,6 +86,8 @@ class DropzoneInput extends InputWidget
             'input' => "#{$input}",
             'files' => $this->files,
             'enableRotate' => $this->enableRotate,
+            'enablePreview' => $this->enablePreview,
+            'enableSort' => $this->enableSort,
             'magnificPopupOptions' => $this->getMagnificPopupOptions()
         ]);
         $js[] = ";(function() {";

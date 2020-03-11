@@ -9,7 +9,10 @@ var dropzoneInput = (function ($) {
 
             var defaults = {
                 sending: function (file, xhr, formData) {
-                    $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("disable");
+                    if (dropzoneInput.config.enableSort) {
+                        $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("disable");
+                    }
+
                     formData.append(yii.getCsrfParam(), yii.getCsrfToken());
                 },
                 successmultiple: function (files, xhr) {
@@ -41,7 +44,9 @@ var dropzoneInput = (function ($) {
                     });
                 },
                 queuecomplete: function () {
-                    $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("enable");
+                    if (dropzoneInput.config.enableSort) {
+                        $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("enable");
+                    }
                 }
             };
 
@@ -51,52 +56,57 @@ var dropzoneInput = (function ($) {
 
             this.initExistingFiles();
             this.updateInput();
-            this.initializePreviewImagePopup();
 
             if (this.config.enableRotate) {
                 $(document).on('click', '.rotate-btn', this.rotate);
             }
 
-            $(document).on('click', '.dz-preview.dz-complete', function (event) {
-                event.preventDefault();
-                var itemId = parseInt($(this).attr('data-id'));
-                var mfpInstance = $.magnificPopup.instance;
-                var currItem = mfpInstance.items.find(x => x.data ? (x.data.id === itemId) : (x.id === itemId));
+            if (this.config.enablePreview) {
+                this.initializePreviewImagePopup();
 
-                if (!currItem) {
-                    var newUrl = (dropzoneInput.options.imageUrl + '?id=' + itemId + '&spec=w99999');
-                    currItem = {
-                        data: {
-                            src: newUrl,
-                            id: itemId,
-                            type: 'image',
-                            index: mfpInstance.items.length
-                        }, id: itemId, src: newUrl, type: 'image', index: mfpInstance.items.length
-                    };
-                    mfpInstance.items.push(currItem);
-                }
+                $(document).on('click', '.dz-preview.dz-complete', function (event) {
+                    event.preventDefault();
+                    var itemId = parseInt($(this).attr('data-id'));
+                    var mfpInstance = $.magnificPopup.instance;
+                    var currItem = mfpInstance.items.find(x => x.data ? (x.data.id === itemId) : (x.id === itemId));
 
-                if (!mfpInstance.currTemplate) {
-                    mfpInstance.currTemplate = {};
-                    mfpInstance.currTemplate['image'] = false;
-                }
+                    if (!currItem) {
+                        var newUrl = (dropzoneInput.options.imageUrl + '?id=' + itemId + '&spec=w99999');
+                        currItem = {
+                            data: {
+                                src: newUrl,
+                                id: itemId,
+                                type: 'image',
+                                index: mfpInstance.items.length
+                            }, id: itemId, src: newUrl, type: 'image', index: mfpInstance.items.length
+                        };
+                        mfpInstance.items.push(currItem);
+                    }
 
-                $('.dz-details').magnificPopup('open');
+                    if (!mfpInstance.currTemplate) {
+                        mfpInstance.currTemplate = {};
+                        mfpInstance.currTemplate['image'] = false;
+                    }
 
-                mfpInstance.goTo(currItem.index);
-                if (mfpInstance.items) mfpInstance.updateItemHTML();
-            });
+                    $('.dz-details').magnificPopup('open');
 
-            $('.dropzone-input-wrapper').sortable({
-                stop: function (event, ui) {
-                    dropzoneInput.updateFilesFromElements();
-                    dropzoneInput.updateInput();
-                }
-            });
+                    mfpInstance.goTo(currItem.index);
+                    if (mfpInstance.items) mfpInstance.updateItemHTML();
+                });
 
-            $(self.dropzone.element).ready(function () {
-                $(this).find('.dz-details').magnificPopup('open');
-            });
+                $(self.dropzone.element).ready(function () {
+                    $(this).find('.dz-details').magnificPopup('open');
+                });
+            }
+
+            if (this.config.enableSort) {
+                $('.dropzone-input-wrapper').sortable({
+                    stop: function (event, ui) {
+                        dropzoneInput.updateFilesFromElements();
+                        dropzoneInput.updateInput();
+                    }
+                });
+            }
         },
         initExistingFiles: function () {
             var self = this;
