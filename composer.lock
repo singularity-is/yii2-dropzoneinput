@@ -4,14 +4,14 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07cae4089912765ed1e42217df6c7c36",
+    "content-hash": "b4caa21eeabf6e65415b3575616c9a0e",
     "packages": [
         {
             "name": "bower-asset/inputmask",
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -250,6 +250,25 @@
                 "html"
             ],
             "time": "2019-10-28T03:44:26+00:00"
+        },
+        {
+            "name": "npm-asset/cropperjs",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:fengyuanchen/cropperjs.git",
+                "reference": "346ef5d9b6f2a0e56a5e268d860fcf0b714ca82a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fengyuanchen/cropperjs/zipball/346ef5d9b6f2a0e56a5e268d860fcf0b714ca82a",
+                "reference": "346ef5d9b6f2a0e56a5e268d860fcf0b714ca82a"
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ],
+            "time": "2020-02-29T06:57:34+00:00"
         },
         {
             "name": "npm-asset/dropzone",
@@ -1606,6 +1625,7 @@
         "bower-asset/magnific-popup": 20,
         "bower-asset/slick-carousel": 20,
         "bower-asset/jquery-ui-sortable": 20,
+        "npm-asset/cropperjs": 20,
         "npm-asset/dropzone": 20
     },
     "prefer-stable": false,

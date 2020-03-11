@@ -28,6 +28,7 @@
         "bower-asset/magnific-popup": "dev-master",
         "bower-asset/slick-carousel": "dev-master",
         "bower-asset/jquery-ui-sortable": "dev-master",
+        "npm-asset/cropperjs": "dev-master",
         "npm-asset/dropzone": "dev-master"
     },
     "require-dev": {

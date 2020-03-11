@@ -111,6 +111,14 @@ Example:
 ]
 ```
 
+#### Enable Crop
+Example:
+```
+[
+    'enableCrop' => true // default false
+]
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
