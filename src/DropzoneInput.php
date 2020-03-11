@@ -17,6 +17,7 @@ use yii\helpers\Inflector;
 use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\JsExpression;
+use yii\web\View;
 use yii\widgets\ActiveField;
 use yii\widgets\InputWidget;
 
@@ -72,7 +73,10 @@ class DropzoneInput extends InputWidget
         $js = [];
         $view = $this->getView();
         $dictCoverFile = array_key_exists('dictCoverFile', $this->clientOptions) ? $this->clientOptions['dictCoverFile'] : 'Cover Image';
+
+        $this->registerOptionalAssets($view);
         DropzoneInputAssets::register($view);
+
         $rawOptions = ArrayHelper::merge([
             'maxFiles' => 20,
             'imageUrl' => Url::to(['/image/view']),
@@ -156,5 +160,20 @@ class DropzoneInput extends InputWidget
                 }")
             ]
         ], $this->magnificPopupOptions);
+    }
+
+    protected function registerOptionalAssets(View $view)
+    {
+        if ($this->enablePreview) {
+            MagnificPopupAsset::register($view);
+        }
+
+        if ($this->enableSort) {
+            SortableAsset::register($view);
+        }
+
+        if ($this->enableCrop) {
+            CropperAsset::register($view);
+        }
     }
 }
