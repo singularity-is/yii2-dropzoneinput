@@ -151,10 +151,10 @@ class DropzoneInput extends InputWidget
             ],
             'callbacks' => [
                 'open' => new JsExpression("function() {
-                    if (!$('.modal-open').hasClass('show-mfp')) {
+                    if (!$('body').hasClass('show-mfp')) {
                         setTimeout(function(){ 
                             $.magnificPopup.close(); 
-                            $('.modal-open').addClass('show-mfp'); 
+                            $('body').addClass('show-mfp'); 
                         }, 1000);
                     }
                 }")

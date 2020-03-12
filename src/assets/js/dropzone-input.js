@@ -29,12 +29,10 @@ var dropzoneInput = (function ($) {
                 },
                 removedfile: function (file) {
                     self.showMessageDiv(false);
-
                     main.ui.confirm('Hey, you sure?').then(function (response) {
                         if (!response.value) {
                             return false;
                         }
-
                         self.config.files = self.config.files.filter(function (item) {
                             return item.id !== file.id;
                         });
@@ -58,20 +56,44 @@ var dropzoneInput = (function ($) {
                     var editor = document.createElement('div');
                     editor.style.position = 'fixed';
                     editor.style.left = 0;
-                    editor.style.right = 0;
-                    editor.style.top = 0;
-                    editor.style.bottom = 0;
+                    editor.style.top = "25%";
                     editor.style.zIndex = 9999;
+
                     editor.style.backgroundColor = '#000';
+                    editor.classList.add("col-lg-4");
+                    editor.classList.add("offset-lg-4");
+                    editor.classList.add("p-0");
+                    editor.classList.add("h-50");
                     document.body.appendChild(editor);
+
                     // Create confirm button at the top left of the viewport
                     var buttonConfirm = document.createElement('button');
+                    buttonConfirm.classList.add("btn");
+                    buttonConfirm.classList.add("btn-primary");
+                    buttonConfirm.classList.add("btn-sm");
                     buttonConfirm.style.position = 'absolute';
-                    buttonConfirm.style.left = '10px';
-                    buttonConfirm.style.top = '10px';
+                    buttonConfirm.style.width = "75px";
+                    buttonConfirm.style.bottom = "-40px";
+                    buttonConfirm.style.right = "-5px";
                     buttonConfirm.style.zIndex = 9999;
                     buttonConfirm.textContent = 'Confirm';
+
                     editor.appendChild(buttonConfirm);
+
+                    var buttonCancel = document.createElement('button');
+                    buttonCancel.classList.add("btn");
+                    buttonCancel.classList.add("btn-default");
+                    buttonCancel.classList.add("btn-sm");
+                    buttonCancel.style.position = 'absolute';
+                    buttonCancel.style.width = "75px";
+                    buttonCancel.style.bottom = "-40px";
+                    buttonCancel.style.right = "80px";
+                    buttonCancel.style.zIndex = 9999;
+                    buttonCancel.textContent = 'Cancel';
+
+                    editor.appendChild(buttonCancel);
+
+
                     buttonConfirm.addEventListener('click', function () {
                         // Get the canvas with image data from Cropper.js
                         var canvas = cropper.getCroppedCanvas({
@@ -98,6 +120,15 @@ var dropzoneInput = (function ($) {
                         // Remove the editor from the view
                         document.body.removeChild(editor);
                     });
+
+                    buttonCancel.addEventListener('click', function () {
+
+                        dropzoneInput.dropzone.files.splice( dropzoneInput.dropzone.files.indexOf(file), 1 );
+                        dropzoneInput.dropzone.processQueue();
+                        $(file.previewElement).remove();
+                        document.body.removeChild(editor);
+                    });
+
                     // Create an image node for Cropper.js
                     var image = new Image();
                     image.src = URL.createObjectURL(file);
@@ -132,7 +163,7 @@ var dropzoneInput = (function ($) {
                         var newUrl = (dropzoneInput.options.imageUrl + '?id=' + itemId + '&spec=w99999');
                         currItem = {
                             data: {
-                                src: newUrl,
+                                src: !currItem.src ? newUrl : currItem.src,
                                 id: itemId,
                                 type: 'image',
                                 index: mfpInstance.items.length
