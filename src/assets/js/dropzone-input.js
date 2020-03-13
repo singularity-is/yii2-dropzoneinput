@@ -39,6 +39,10 @@ var dropzoneInput = (function ($) {
 
                         $(file.previewElement).remove();
                         self.updateInput();
+
+                        if (dropzoneInput.dropzone.options.maxFiles > dropzoneInput.config.files.length) {
+                            $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
+                        }
                     });
                 },
                 queuecomplete: function () {
