@@ -156,7 +156,7 @@ var dropzoneInput = (function ($) {
                     var mfpInstance = $.magnificPopup.instance;
                     var currItem = mfpInstance.items.find(x => x.data ? (x.data.id === itemId) : (x.id === itemId));
 
-                    if (!currItem) {
+                    if (!currItem && currItem.data == null) {
                         var newUrl = (dropzoneInput.options.imageUrl + '?id=' + itemId + '&spec=w99999');
                         currItem = {
                             data: {
