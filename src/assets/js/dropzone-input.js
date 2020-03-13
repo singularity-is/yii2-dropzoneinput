@@ -152,6 +152,7 @@ var dropzoneInput = (function ($) {
             }
 
             if (this.config.enablePreview) {
+                $('body').removeClass('show-mfp');
                 this.initializePreviewImagePopup();
 
                 $(document).on('click', '.dz-preview.dz-complete', function (event) {
