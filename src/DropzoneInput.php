@@ -85,6 +85,10 @@ class DropzoneInput extends InputWidget
             'dictCancelUpload' => '<i class="fa fa-times-circle"></i>',
             'previewTemplate' => $this->render('template', ['enableRotate' => $this->enableRotate, 'dictCoverFile' => $dictCoverFile])
         ], $this->clientOptions);
+        if (is_array($this->files) && count($this->files) > 0) {
+            $maxFiles = (array_key_exists('maxFiles', $rawOptions) ? (intval($rawOptions['maxFiles']) - count($this->files)) : (20 - count($this->files)));
+            $rawOptions['maxFiles'] = ($maxFiles < 0 ? 0 : $maxFiles);
+        }
         $options = Json::encode($rawOptions);
         $input = Html::getInputId($this->model, $this->attribute);
         $config = Json::encode([
