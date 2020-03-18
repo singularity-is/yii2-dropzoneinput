@@ -118,7 +118,10 @@ Example:
     'enableCrop' => true // default false,
     'clientOptions' => [
         'parallelUploads' => 1 // default 2 (it is recommended to set this to 1 when using crop)
-    ]
+    ],
+    'beforeCrop' => new JsExpression("function() {
+        console.log('Just before image is cropped!');
+    }"),
 ]
 ```
 
