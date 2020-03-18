@@ -38,6 +38,7 @@ use yii\widgets\InputWidget;
  * @property bool $enablePreview
  * @property bool $enableSort
  * @property bool $enableCrop
+ * @property string $beforeCrop
  */
 class DropzoneInput extends InputWidget
 {
@@ -50,6 +51,8 @@ class DropzoneInput extends InputWidget
     public $enablePreview = false;
     public $enableSort = true;
     public $enableCrop = false;
+
+    public $beforeCrop = null;
 
     public function init()
     {
@@ -95,6 +98,7 @@ class DropzoneInput extends InputWidget
             'enablePreview' => $this->enablePreview,
             'enableSort' => $this->enableSort,
             'enableCrop' => $this->enableCrop,
+            'beforeCrop' => $this->beforeCrop,
             'magnificPopupOptions' => $this->getMagnificPopupOptions()
         ]);
         $js[] = ";(function() {";

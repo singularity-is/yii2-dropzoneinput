@@ -28,6 +28,21 @@ var dropzoneInput = (function ($) {
                     self.updateInput();
                 },
                 removedfile: function (file) {
+                    if (dropzoneInput.enableRemoveConfirmation === false) {
+                        self.config.files = self.config.files.filter(function (item) {
+                            return item.id !== file.id;
+                        });
+
+                        $(file.previewElement).remove();
+                        self.updateInput();
+
+                        if (dropzoneInput.dropzone.options.maxFiles > dropzoneInput.config.files.length) {
+                            $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
+                        }
+
+                        return;
+                    }
+
                     self.showMessageDiv(false);
                     main.ui.confirm('Hey, you sure?').then(function (response) {
                         if (!response.value) {
@@ -99,6 +114,10 @@ var dropzoneInput = (function ($) {
 
 
                     buttonConfirm.addEventListener('click', function () {
+                        var beforeCrop = dropzoneInput.config.beforeCrop;
+                        if (beforeCrop) {
+                            beforeCrop();
+                        }
                         // Get the canvas with image data from Cropper.js
                         var canvas = cropper.getCroppedCanvas({});
                         // Turn the canvas into a Blob (file object without a name)
@@ -124,7 +143,7 @@ var dropzoneInput = (function ($) {
 
                     buttonCancel.addEventListener('click', function () {
 
-                        dropzoneInput.dropzone.files.splice( dropzoneInput.dropzone.files.indexOf(file), 1 );
+                        dropzoneInput.dropzone.files.splice(dropzoneInput.dropzone.files.indexOf(file), 1);
                         dropzoneInput.dropzone.processQueue();
                         $(file.previewElement).remove();
                         document.body.removeChild(editor);
@@ -229,7 +248,7 @@ var dropzoneInput = (function ($) {
 
             $(self.config.input).val(JSON.stringify(ids));
 
-            if (ids.length === 0) {
+            if (ids.length === 0 && $('dz-preview').length > 0) {
                 self.showMessageDiv(true);
             }
         },
