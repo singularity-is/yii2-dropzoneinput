@@ -155,7 +155,7 @@ var dropzoneInput = (function ($) {
                     editor.appendChild(image);
 
                     // Create Cropper.js
-                    var cropper = new Cropper(image, {aspectRatio: 1});
+                    var cropper = new Cropper(image, dropzoneInput.config.cropperOptions);
                 }
             }
 

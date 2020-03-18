@@ -116,6 +116,9 @@ Example:
 ```
 [
     'enableCrop' => true // default false,
+    'cropperOptions' => [
+        'aspectRatio' => 1.4
+    ],
     'clientOptions' => [
         'parallelUploads' => 1 // default 2 (it is recommended to set this to 1 when using crop)
     ],
@@ -124,6 +127,7 @@ Example:
     }"),
 ]
 ```
+see [Cropper.JS](https://github.com/fengyuanchen/cropperjs/blob/master/README.md) for full documentation
 
 ## Contributing
 

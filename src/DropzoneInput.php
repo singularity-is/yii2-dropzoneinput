@@ -33,6 +33,7 @@ use yii\widgets\InputWidget;
  * @property string $name
  * @property string $value
  * @property array $magnificPopupOptions
+ * @property array $cropperOptions
  * @property bool $highlightFirst
  * @property bool $enableRotate
  * @property bool $enablePreview
@@ -44,6 +45,7 @@ class DropzoneInput extends InputWidget
 {
     public $clientOptions = [];
     public $magnificPopupOptions = [];
+    public $cropperOptions = [];
     public $files = [];
 
     public $highlightFirst = false;
@@ -99,7 +101,8 @@ class DropzoneInput extends InputWidget
             'enableSort' => $this->enableSort,
             'enableCrop' => $this->enableCrop,
             'beforeCrop' => $this->beforeCrop,
-            'magnificPopupOptions' => $this->getMagnificPopupOptions()
+            'magnificPopupOptions' => $this->getMagnificPopupOptions(),
+            'cropperOptions' => $this->getCropperOptions()
         ]);
         $js[] = ";(function() {";
         $js[] = "dropzoneInput.initialize({$config}, {$options});";
@@ -164,6 +167,13 @@ class DropzoneInput extends InputWidget
                 }")
             ]
         ], $this->magnificPopupOptions);
+    }
+
+    private function getCropperOptions()
+    {
+        return ArrayHelper::merge([
+            'aspectRatio' => 1
+        ], $this->cropperOptions);
     }
 
     protected function registerOptionalAssets(View $view)
