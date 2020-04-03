@@ -44,7 +44,7 @@ var dropzoneInput = (function ($) {
                     }
 
                     self.showMessageDiv(false);
-                    main.ui.confirm('Hey, you sure?').then(function (response) {
+                    main.ui.confirm(dropzoneInput.config.removeMessage).then(function (response) {
                         if (!response.value) {
                             return false;
                         }

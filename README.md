@@ -127,6 +127,14 @@ Example:
     }"),
 ]
 ```
+
+#### Custom Remove Message
+Example:
+```
+[
+    'removeMessage' => 'Are you sure you want to delete image?' //this is the default
+]
+```
 see [Cropper.JS](https://github.com/fengyuanchen/cropperjs/blob/master/README.md) for full documentation
 
 ## Contributing

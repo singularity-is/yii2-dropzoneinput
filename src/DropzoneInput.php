@@ -48,6 +48,8 @@ class DropzoneInput extends InputWidget
     public $cropperOptions = [];
     public $files = [];
 
+    public $removeMessage = 'Are you sure you want to delete image?';
+
     public $highlightFirst = false;
     public $enableRotate = false;
     public $enablePreview = false;
@@ -96,6 +98,7 @@ class DropzoneInput extends InputWidget
             'el' => "#{$this->getDropzoneId()}",
             'input' => "#{$input}",
             'files' => $this->files,
+            'removeMessage' => $this->removeMessage,
             'enableRotate' => $this->enableRotate,
             'enablePreview' => $this->enablePreview,
             'enableSort' => $this->enableSort,
