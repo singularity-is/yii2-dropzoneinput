@@ -344,8 +344,9 @@ var dropzoneInput = (function ($) {
             item.find('i').removeAttr('data-initial-class');
         },
         refreshMaxFiles: function () {
-            var initialMaxFiles = (dropzoneInput.dropzone.options.maxFiles + dropzoneInput.config.initialFiles.length) - (dropzoneInput.config.initialFiles.length - dropzoneInput.config.files.length);
-            dropzoneInput.dropzone.options.maxFiles = initialMaxFiles - dropzoneInput.config.files.length;
+            var initialMaxFiles = dropzoneInput.dropzone.options.maxFiles + dropzoneInput.config.initialFiles.length;
+            dropzoneInput.config.initialFiles = dropzoneInput.config.initialFiles.filter(x => dropzoneInput.config.files.filter(y => y.id == x.id).length > 0);
+            dropzoneInput.dropzone.options.maxFiles = initialMaxFiles - dropzoneInput.config.initialFiles.length;
         }
     };
 })(jQuery);
