@@ -40,6 +40,8 @@ var dropzoneInput = (function ($) {
                             $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
                         }
 
+                        dropzoneInput.refreshMaxFiles();
+
                         return;
                     }
 
@@ -58,6 +60,8 @@ var dropzoneInput = (function ($) {
                         if (dropzoneInput.dropzone.options.maxFiles > dropzoneInput.config.files.length) {
                             $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
                         }
+
+                        dropzoneInput.refreshMaxFiles();
                     });
                 },
                 queuecomplete: function () {
@@ -221,7 +225,11 @@ var dropzoneInput = (function ($) {
         initExistingFiles: function () {
             var self = this;
 
+            let fileCountOnServer = self.config.files.length;
+            self.dropzone.options.maxFiles = self.dropzone.options.maxFiles - fileCountOnServer;
+
             $.each(self.config.files, function (key, file) {
+                self.dropzone.files.push(file);
                 self.dropzone.emit('addedfile', file);
                 self.dropzone.emit('complete', file);
                 self.dropzone.emit('thumbnail', file, file.url);
@@ -335,6 +343,10 @@ var dropzoneInput = (function ($) {
             item.find('i').attr('class', item.find('i').attr('data-initial-class'));
             item.find('i').removeAttr('data-initial-class');
         },
+        refreshMaxFiles: function () {
+            var initialMaxFiles = (dropzoneInput.dropzone.options.maxFiles + dropzoneInput.config.initialFiles.length) - (dropzoneInput.config.initialFiles.length - dropzoneInput.config.files.length);
+            dropzoneInput.dropzone.options.maxFiles = initialMaxFiles - dropzoneInput.config.files.length;
+        }
     };
 })(jQuery);
 

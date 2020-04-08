@@ -98,6 +98,7 @@ class DropzoneInput extends InputWidget
             'el' => "#{$this->getDropzoneId()}",
             'input' => "#{$input}",
             'files' => $this->files,
+            'initialFiles' => $this->files,
             'removeMessage' => $this->removeMessage,
             'enableRotate' => $this->enableRotate,
             'enablePreview' => $this->enablePreview,
