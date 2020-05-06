@@ -176,7 +176,7 @@ class DropzoneInput extends InputWidget
     private function getCropperOptions()
     {
         return ArrayHelper::merge([
-            'aspectRatio' => 1
+            'initialAspectRatio' => 1
         ], $this->cropperOptions);
     }
 
