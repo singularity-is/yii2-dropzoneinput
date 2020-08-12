@@ -3,13 +3,17 @@ var dropzoneInput = (function ($) {
         config: {},
         options: {},
         dropzone: null,
+        instances: [],
+        id: 1,
+        idCounter: 1,
         initialize: function (config, options) {
-            var self = this;
-            this.config = config;
+            var self = {...this};
+            self.id = dropzoneInput.idCounter++;
+            self.config = config;
 
             var defaults = {
                 sending: function (file, xhr, formData) {
-                    if (dropzoneInput.config.enableSort) {
+                    if (self.config.enableSort) {
                         $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("disable");
                     }
 
@@ -28,7 +32,7 @@ var dropzoneInput = (function ($) {
                     self.updateInput();
                 },
                 removedfile: function (file) {
-                    if (dropzoneInput.enableRemoveConfirmation === false) {
+                    if (self.enableRemoveConfirmation === false) {
                         self.config.files = self.config.files.filter(function (item) {
                             return item.id !== file.id;
                         });
@@ -36,17 +40,17 @@ var dropzoneInput = (function ($) {
                         $(file.previewElement).remove();
                         self.updateInput();
 
-                        if (dropzoneInput.dropzone.options.maxFiles > dropzoneInput.config.files.length) {
-                            $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
+                        if (self.dropzone.options.maxFiles > self.config.files.length) {
+                            $(self.dropzone.element).removeClass('dz-max-files-reached');
                         }
 
-                        dropzoneInput.refreshMaxFiles();
+                        self.refreshMaxFiles();
 
                         return;
                     }
 
                     self.showMessageDiv(false);
-                    main.ui.confirm(dropzoneInput.config.removeMessage).then(function (response) {
+                    main.ui.confirm(self.config.removeMessage).then(function (response) {
                         if (!response.value) {
                             return false;
                         }
@@ -57,21 +61,21 @@ var dropzoneInput = (function ($) {
                         $(file.previewElement).remove();
                         self.updateInput();
 
-                        if (dropzoneInput.dropzone.options.maxFiles > dropzoneInput.config.files.length) {
-                            $(dropzoneInput.dropzone.element).removeClass('dz-max-files-reached');
+                        if (self.dropzone.options.maxFiles > self.config.files.length) {
+                            $(self.dropzone.element).removeClass('dz-max-files-reached');
                         }
 
-                        dropzoneInput.refreshMaxFiles();
+                        self.refreshMaxFiles();
                     });
                 },
                 queuecomplete: function () {
-                    if (dropzoneInput.config.enableSort) {
+                    if (self.config.enableSort) {
                         $('.dropzone-input-wrapper.dz-clickable.dz-started').sortable("enable");
                     }
                 }
             };
 
-            if (this.config.enableCrop) {
+            if (self.config.enableCrop) {
                 defaults.transformFile = function (file, done) {
                     // Create Dropzone reference for use in confirm button click handler
                     var myDropZone = this;
@@ -118,9 +122,9 @@ var dropzoneInput = (function ($) {
 
 
                     buttonConfirm.addEventListener('click', function () {
-                        var beforeCrop = dropzoneInput.config.beforeCrop;
+                        var beforeCrop = self.config.beforeCrop;
                         if (beforeCrop) {
-                            beforeCrop();
+                            beforeCrop(self);
                         }
                         // Get the canvas with image data from Cropper.js
                         var canvas = cropper.getCroppedCanvas({});
@@ -147,8 +151,8 @@ var dropzoneInput = (function ($) {
 
                     buttonCancel.addEventListener('click', function () {
 
-                        dropzoneInput.dropzone.files.splice(dropzoneInput.dropzone.files.indexOf(file), 1);
-                        dropzoneInput.dropzone.processQueue();
+                        self.dropzone.files.splice(self.dropzone.files.indexOf(file), 1);
+                        self.dropzone.processQueue();
                         $(file.previewElement).remove();
                         document.body.removeChild(editor);
                     });
@@ -159,41 +163,48 @@ var dropzoneInput = (function ($) {
                     editor.appendChild(image);
 
                     // Create Cropper.js
-                    var cropper = new Cropper(image, dropzoneInput.config.cropperOptions);
+                    var cropper = new Cropper(image, self.config.cropperOptions);
                 }
             }
 
-            this.options = $.extend({}, defaults, options);
+            self.options = $.extend({}, defaults, options);
 
-            this.dropzone = new Dropzone(this.config.el, this.options);
+            self.dropzone = new Dropzone(self.config.el, self.options);
 
-            this.initExistingFiles();
-            this.updateInput();
+            self.initExistingFiles();
+            self.updateInput();
 
-            if (this.config.enableRotate) {
-                $(document).on('click', '.rotate-btn', this.rotate);
+            if (self.config.enableRotate) {
+                $(document).on('click', '.rotate-btn', this.rotate.bind(self));
             }
 
-            if (this.config.enablePreview) {
+            if (self.config.enablePreview) {
                 $('body').removeClass('show-mfp');
-                this.initializePreviewImagePopup();
+                self.initializePreviewImagePopup();
 
                 $(document).on('click', '.dz-preview.dz-complete', function (event) {
                     event.preventDefault();
-                    var itemId = parseInt($(this).attr('data-id'));
-                    var mfpInstance = $.magnificPopup.instance;
-                    var currItem = mfpInstance.items.find(x => x.data ? (x.data.id === itemId) : (x.id === itemId));
+                    var itemId = parseInt($(event.target).parent().attr('data-id'));
+                    var mfpInstance = self.mpfInstance;
+                    var currItem = mfpInstance.items ? mfpInstance.items.find(x => x.data ? (x.data.id === itemId) : (x.id === itemId)) : null;
 
-                    if (!currItem && currItem.data == null) {
-                        var newUrl = (dropzoneInput.options.imageUrl + '?id=' + itemId + '&spec=w99999');
+                    if (!currItem || currItem.data == null) {
+                        var newUrl = (self.options.imageUrl + '?id=' + itemId + '&spec=w99999');
                         currItem = {
                             data: {
-                                src: !currItem.src ? newUrl : currItem.src,
+                                src: (!currItem || !currItem.src) ? newUrl : currItem.src,
                                 id: itemId,
                                 type: 'image',
-                                index: mfpInstance.items.length
-                            }, id: itemId, src: newUrl, type: 'image', index: mfpInstance.items.length
+                                index: mfpInstance.items ? mfpInstance.items.length : 0
+                            },
+                            id: itemId,
+                            src: newUrl,
+                            type: 'image',
+                            index: mfpInstance.items ? mfpInstance.items.length : 0
                         };
+                        if (!mfpInstance.items) {
+                            mfpInstance.items = [];
+                        }
                         mfpInstance.items.push(currItem);
                     }
 
@@ -204,8 +215,9 @@ var dropzoneInput = (function ($) {
 
                     $('.dz-details').magnificPopup('open');
 
-                    mfpInstance.goTo(currItem.index);
-                    if (mfpInstance.items) mfpInstance.updateItemHTML();
+                    $.magnificPopup.instance.items = mfpInstance.items;
+                    $.magnificPopup.instance.goTo(currItem.index);
+                    if ($.magnificPopup.instance.items) $.magnificPopup.instance.updateItemHTML();
                 });
 
                 $(self.dropzone.element).ready(function () {
@@ -213,14 +225,17 @@ var dropzoneInput = (function ($) {
                 });
             }
 
-            if (this.config.enableSort) {
+            if (self.config.enableSort) {
                 $('.dropzone-input-wrapper').sortable({
                     stop: function (event, ui) {
-                        dropzoneInput.updateFilesFromElements();
-                        dropzoneInput.updateInput();
+                        self.updateFilesFromElements().bind(self);
+                        self.updateInput().bind(self);
                     }
                 });
             }
+
+            self.mpfInstance = {...$.magnificPopup.instance};
+            dropzoneInput.instances.push(self);
         },
         initExistingFiles: function () {
             var self = this;
@@ -249,7 +264,7 @@ var dropzoneInput = (function ($) {
 
             self.config.files.reverse();
             $.each(self.config.files, function (key, file) {
-                var dropzoneChildren = $(dropzoneInput.dropzone.element).children();
+                var dropzoneChildren = $(self.dropzone.element).children();
                 $(dropzoneChildren[dropzoneChildren.length - (key + 1)]).attr('data-id', file.id);
             });
             self.config.files.reverse();
@@ -268,10 +283,11 @@ var dropzoneInput = (function ($) {
             }
         },
         updateFilesFromElements: function () {
-            var dropzoneChildren = $(dropzoneInput.dropzone.element).children();
+            var self = this;
+            var dropzoneChildren = $(self.dropzone.element).children();
             var updatedFiles = [];
             $.each(dropzoneChildren.get().reverse(), function (key, element) {
-                var oldFiles = dropzoneInput.config.files;
+                var oldFiles = self.config.files;
                 var id = parseInt($(element).attr('data-id'));
                 if (id) {
                     var updatedFile = oldFiles.find(x => x.id === id);
@@ -281,10 +297,11 @@ var dropzoneInput = (function ($) {
                 }
             });
             updatedFiles.reverse();
-            dropzoneInput.config.files = updatedFiles;
+            this.config.files = updatedFiles;
         },
-        rotate: function () {
-            var rotateButton = $(this);
+        rotate: function (e) {
+            var self = this;
+            var rotateButton = e.target;
             var boxElement = rotateButton.closest('.dz-image-preview');
             var bothButtons = boxElement.find('.rotate-btn');
 
@@ -292,7 +309,7 @@ var dropzoneInput = (function ($) {
                 return;
             } else {
                 for (let i = 0; i < bothButtons.length; i++) {
-                    dropzoneInput.beginLoading($(bothButtons[i]));
+                    self.beginLoading($(bothButtons[i]));
                 }
             }
 
@@ -313,13 +330,13 @@ var dropzoneInput = (function ($) {
                 newAmount = (amount - 90) <= -360 ? 0 : (amount - 90);
             }
 
-            $.get(dropzoneInput.options.rotateUrl + '?id=' + imageId + '&angle=' + (direction === 'right' ? 90 : -90), function (data, status) {
+            $.get(self.options.rotateUrl + '?id=' + imageId + '&angle=' + (direction === 'right' ? 90 : -90), function (data, status) {
                 if (status === 'success') {
-                    dropzoneInput.rotateImgElement(imgElement, newAmount);
+                    self.rotateImgElement(imgElement, newAmount);
                 }
 
                 for (let i = 0; i < bothButtons.length; i++) {
-                    dropzoneInput.stopLoading($(bothButtons[i]));
+                    self.stopLoading($(bothButtons[i]));
                 }
             });
         },
@@ -344,12 +361,12 @@ var dropzoneInput = (function ($) {
             item.find('i').removeAttr('data-initial-class');
         },
         refreshMaxFiles: function () {
-            var initialMaxFiles = dropzoneInput.dropzone.options.maxFiles + dropzoneInput.config.initialFiles.length;
-            dropzoneInput.config.initialFiles = dropzoneInput.config.initialFiles.filter(x => dropzoneInput.config.files.filter(y => y.id == x.id).length > 0);
-            dropzoneInput.dropzone.options.maxFiles = initialMaxFiles - dropzoneInput.config.initialFiles.length;
+            var self = this;
+            var initialMaxFiles = self.dropzone.options.maxFiles + self.config.initialFiles.length;
+            self.config.initialFiles = self.config.initialFiles.filter(x => self.config.files.filter(y => y.id == x.id).length > 0);
+            self.dropzone.options.maxFiles = initialMaxFiles - self.config.initialFiles.length;
         }
     };
 })(jQuery);
-
 
 
